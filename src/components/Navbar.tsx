@@ -42,7 +42,6 @@ const Navbar = ({
     >
       <nav className="w-full relative rounded-full border border-white/20 backdrop-filter backdrop-blur-lg shadow-input flex justify-center space-x-5 px-3 py-3 sm:py-4 ">
         <Link href="/" className="flex items-center pl-1 lg:mr-12">
-          {/* <span className={cn("text-xl font-bold text-white   ", bungee.className)}>CURO</span> */}
           <Image src={curo} className="w-24" alt="" />
         </Link>
         {navItems.map(
@@ -64,16 +63,15 @@ const Navbar = ({
             </Link>
           )
         )}
-        <div className="container-fluid">
-          <Link href="/" passHref legacyBehavior>
-            hi
-          </Link>
-          <div className="navbar-nav pt-1">
-            <button className="btn btn-secondary" onClick={action}>
+
+        <span className="flex items-center lg:ml-12 lg:pl-12">
+          <button onClick={action} className="relative inline-flex h-10 overflow-hidden rounded-full p-[1px] px-[0.9px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+            <span className="inline-flex shimmer-animation hover:opacity-75 transition-opacity h-full w-full cursor-pointer items-center justify-center rounded-full bg-transparent  px-6 py-1 text-sm font-medium text-white backdrop-blur-xl">
               {label}
-            </button>
-          </div>
-        </div>
+            </span>
+          </button>
+        </span>
       </nav>
     </div>
   );
