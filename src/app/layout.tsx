@@ -39,7 +39,7 @@ export default function RootLayout({ children }: {
                 link: "/dashboard"
               },
               {
-                name: "Feeback",
+                name: "Feedback",
                 link: "/feedback"
               }
             ]}
