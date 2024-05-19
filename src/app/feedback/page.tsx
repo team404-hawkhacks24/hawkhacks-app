@@ -1,4 +1,4 @@
-import { SignupForm } from "@/src/components/Feedback/Feed";
+import { SignupForm } from "@/src/components/Feedback/Feedback";
 
 
 function FeedbackPage(){

@@ -1,10 +1,35 @@
 "use client";
 import { wheel } from "@/public/images";
+import { NearContext } from "@/src/context";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 import { AuroraBackground } from "../ui/AuroraBackground";
 import { FlipWords } from "../ui/flip-words";
 
+
 const Homepage = () => {
+  const { signedAccountId, wallet } = useContext(NearContext);
+  const [action, setAction] = useState<any>();
+  const [label, setLabel] = useState<any>();
+  const router = useRouter()
+
+  const navigateToDonate = () => {
+    router.push("/donate-now")
+  }
+
+  useEffect(() => {
+    if (!wallet) return;
+
+    if (signedAccountId) {
+      setLabel("Donate Now");
+      setAction(() => navigateToDonate);
+    } else {
+      setAction(() => wallet.signIn);
+      setLabel("Login");
+    }
+  }, [signedAccountId, wallet]);
+
   const words = ["Possible", "Impactful", "Sustainable"];
   return (
     <>
@@ -21,8 +46,8 @@ const Homepage = () => {
               Support
             </p>
             <div className="\">
-              <button className="w-auto mt-3 font-bold border border-white py-2 px-5 text-white rounded-full hover:text-black hover:bg-white/90">
-                Log In
+              <button onClick={action} className="w-auto mt-3 font-bold border border-white py-2 px-5 text-white rounded-full hover:text-black hover:bg-white/90">
+                {label || "Login"}
               </button>
             </div>
           </div>

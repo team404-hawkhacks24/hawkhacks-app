@@ -26,7 +26,7 @@ const Navbar = ({
 
     if (signedAccountId) {
       setAction(() => wallet.signOut);
-      setLabel(`Logout ${signedAccountId}`);
+      setLabel(`Logout`);
     } else {
       setAction(() => wallet.signIn);
       setLabel("Login");
