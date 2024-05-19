@@ -19,7 +19,6 @@ const IndividualCharityPage = async ({
   );
 
   const data = response.data.data;
-  console.log(data);
   let ngoData: any = {};
   if (data) {
     const ngo_id = data.ngo_id;
@@ -32,7 +31,6 @@ const IndividualCharityPage = async ({
       }
     );
     ngoData = response.data.data;
-    console.log(ngoData);
   }
 
   return (

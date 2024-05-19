@@ -2,7 +2,6 @@ import axios from "axios";
 
 export async function POST(request: Request) {
     const formData = await request.json()
-    console.log(formData);
     
     const response = await axios.post('https://us-east-2.aws.neurelo.com/rest/users/__one', {
       email: formData.walletId.split(".")[0],

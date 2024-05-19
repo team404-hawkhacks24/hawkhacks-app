@@ -50,7 +50,6 @@ export function SignupForm() {
     await axios
       .post("/api/feedbacks", userData)
       .then((response) => {
-        console.log(response);
         setSubmit(true)
       })
       .catch((error) => {

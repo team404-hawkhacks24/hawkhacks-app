@@ -8,7 +8,6 @@ export async function GET(){
 
 export async function POST(request: Request) {
     const formData = await request.json()
-    console.log(formData);
     
     const response = await axios.post('https://us-east-2.aws.neurelo.com/rest/feedbackForm/__one', {
       feedback_type: formData.type,

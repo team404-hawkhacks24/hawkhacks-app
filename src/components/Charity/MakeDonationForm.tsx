@@ -42,7 +42,6 @@ const MakeDonationForm  = ({ orgList}: {
     await axios
       .post("/api/charity/make", userData)
       .then((response) => {
-        console.log(response);
         router.push("/dashboard")
       })
       .catch((error) => {
