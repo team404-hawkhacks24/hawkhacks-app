@@ -16,6 +16,8 @@
     "@near-wallet-selector/here-wallet": "^8.9.7",
     "@near-wallet-selector/modal-ui": "^8.9.7",
     "@near-wallet-selector/my-near-wallet": "^8.9.7",
+    "@radix-ui/react-label": "^2.0.2",
+    "@tabler/icons-react": "^3.4.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.4",
     "near-api-js": "^3.0.4",
@@ -23,6 +25,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-element-to-jsx-string": "^15.0.0",
+    "react-label": "^0.0.6",
     "tailwind-merge": "^2.3.0",
     "typescript": "^5.4.5"
   },
