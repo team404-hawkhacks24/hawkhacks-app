@@ -6,6 +6,7 @@ import { HelloNearContract, NetworkId } from "@/src/config";
 import { NearContext } from "@/src/context";
 import { Wallet } from "@/src/wallets/near";
 import { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 
 const wallet = new Wallet({
   networkId: NetworkId,
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: {
   }, []);
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body>
         <NearContext.Provider value={{ wallet, signedAccountId }}>
           <Navbar
@@ -35,10 +36,15 @@ export default function RootLayout({ children }: {
               {
                 name: "About",
                 link: "/about-us"
+              },
+              {
+                name: "Feeback",
+                link: "/feedback"
               }
             ]}
           />
           {children}
+          <Footer/>
         </NearContext.Provider>
       </body>
     </html>

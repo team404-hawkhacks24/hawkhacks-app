@@ -36,7 +36,7 @@ const Navbar = ({
   return (
     <div
       className={cn(
-        "fixed top-10 inset-x-0 max-w-xl mx-auto px-5 sm:px-0 z-50",
+        "fixed top-10 inset-x-0 max-w-xl mx-auto px-5 sm:px-0 z-[11]",
         className
       )}
     >
