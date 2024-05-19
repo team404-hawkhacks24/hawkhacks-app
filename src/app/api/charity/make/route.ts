@@ -16,9 +16,11 @@ export async function POST(request: Request) {
         }
       })
       const data = await response.data
+      const date = new Date().toISOString()
+
       const donationRes = await axios.post('https://us-east-2.aws.neurelo.com/rest/donations/__one', {
-        amount: formData.amount,
-        date: Date.now(),
+        amount: parseInt(formData.amount),
+        date: date,
         donor_id: formData.walletId,
         ngo_id: "60d5f9e2d8b5b6e45f1b3c4f",
         smart_contract_info: {
@@ -31,6 +33,7 @@ export async function POST(request: Request) {
             "X-API-KEY": process.env.NEXT_PUBLIC_NEURELO_KEY
           }
         })
+        const donationData = donationRes.data;        
     
       return Response.json(data)
   }

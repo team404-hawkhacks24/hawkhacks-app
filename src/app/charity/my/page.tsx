@@ -11,10 +11,7 @@ const MyDonations = async () => {
     }
   );
 
-  const data = response.data.data;
-
-  console.log(data);
-  
+  const data = response.data.data;  
   return (
     <div className="w-full min-h-screen mt-44 md:max-w-[60vw] mx-auto">
       <div className="w-full px-32">
