@@ -21,7 +21,7 @@ const FilterMyDonations = ({ donationsData }: { donationsData: any }) => {
 
   return (
     <div className="rounded-lg bg-slate-600 p-4 mt-10">
-        {donations.length == 0 && (
+        {donations && donations.length == 0 && (
             <p>You currently don't have any donations</p>
         )}
       {donations && donations.map((donation: any) => (
