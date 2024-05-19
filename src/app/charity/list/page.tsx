@@ -24,7 +24,7 @@ const CharityList = async () => {
         </h2>
       </div>
       {/* <CharityCardlist/> */}
-      <div className="px-24 min-h-screen mt-16 space-y-6">
+      <div className="px-24 min-h-screen mt-16 flex flex-col gap-5">
         {data?.map((entry: any) => (
           <Link key={entry.campaign_id} href={`/charity/list/${entry.id}`}>
             <div className="bg-zinc-700 p-6 px-10 space-y-5 rounded-xl shadow-md">
