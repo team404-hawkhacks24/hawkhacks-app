@@ -8,6 +8,7 @@ import { Wallet } from "@/src/wallets/near";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 
+
 const wallet = new Wallet({
   networkId: NetworkId,
   createAccessKeyFor: HelloNearContract,
@@ -34,8 +35,8 @@ export default function RootLayout({ children }: {
                 link: "/",
               },
               {
-                name: "About",
-                link: "/about-us"
+                name: "Dashboard",
+                link: "/dashboard"
               },
               {
                 name: "Feeback",

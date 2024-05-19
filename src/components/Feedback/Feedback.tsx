@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/utils/cn";
-import axios from 'axios'; // Or your preferred fetching library
+import axios from "axios";
 import React, { useState } from "react";
 import { Select } from "../ui/form/Select";
 import { TextArea } from "../ui/form/TextArea";
@@ -9,86 +9,118 @@ import { Label } from "../ui/form/label";
 
 
 
-
-export function SignupForm(
-) {
-
+export function SignupForm() {
   const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [type, setType] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [submit, setSubmit] = useState(false);
 
- const handleError= () => {
-    if(firstName == ""){
+  const handleError = () => {
+    if (firstName == "") {
       setError("First name can not be empty");
-    }else if(lastName == ""){
+    } else if (lastName == "") {
       setError("Last name can not be empty");
-    }else if(email == ""){
+    } else if (email == "") {
       setError("Email can not be empty");
-    }else if(feedback == ""){
+    } else if (feedback == "") {
       setError("Feedback area can not be empty");
-    }else{
+    } else {
       setError("");
     }
   };
 
-  const handleSubmit = async (e:any) => {
-    e.preventDefault()
-    const userData = {
-      firstName, lastName, email, type, feedback
-    }
-    await axios.post("/api/feedbacks", userData).then((response) =>{
-      console.log(response)
-    }).catch((error) => {
-      console.log(error)
-    })
 
-  }
-
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    handleError()
+    console.log(error);
+    
+    if (error != "") return;
+    
+      const userData = {
+        firstName,
+        lastName,
+        email,
+        type,
+        feedback,
+      };
+    await axios
+      .post("/api/feedbacks", userData)
+      .then((response) => {
+        console.log(response);
+        setSubmit(true)
+      })
+      .catch((error) => {
+        setError("Something went wrong, please try again later.")
+        console.log(error);
+      });
+  };
 
   return (
     <div className="max-w-xl w-full mx-auto mt-40 rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Feedback Page 
+        Feedback Page
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         Improve CURO - Your Feedback Counts
       </p>
-
-      <form className="my-8" action="formFeedback" method="post">
+      {submit ? (
+       <p>
+       Thank you for filling the form, your valuable feedback matters a lot!
+     </p>
+      ) : (
+        <form className="my-8" action="formFeedback" method="post">
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="First Name" type="text" onChange={(e) => setFirstName(e.target.value)}/>
+            <Input
+              id="firstname"
+              placeholder="First Name"
+              type="text"
+              onChange={(e) => setFirstName(e.target.value)}
+            />
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Last Name" type="text" onChange={(e) => setLastName(e.target.value)}/>
+            <Input
+              id="lastname"
+              placeholder="Last Name"
+              type="text"
+              onChange={(e) => setLastName(e.target.value)}
+            />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="gmail@gmail.com" type="email" onChange={(e) => setEmail(e.target.value)}/>
+          <Input
+            id="email"
+            placeholder="gmail@gmail.com"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="type">Type of Feedback</Label>
           {/* <Input type="" /> */}
-          <Select 
-          options={[
-            { label: "General", value: "General" },
-            { label: "Enquiry", value: "Enquiry" },
-            
-          ]} onChange={(e) => setType(e.target.value)}/>
-            
-         
+          <Select
+            options={[
+              { label: "General", value: "General" },
+              { label: "Enquiry", value: "Enquiry" },
+            ]}
+            onChange={(e) => setType(e.target.value)}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-8">
           <Label htmlFor="feedback">Feedback</Label>
-          <TextArea placeholder="Feedback" onChange={(e) => setFeedback(e.target.value)}/>
+          <TextArea
+            placeholder="Feedback"
+            onChange={(e) => setFeedback(e.target.value)}
+          />
         </LabelInputContainer>
-          {error ? (<p className="text-red-500 font-bold"> {error} </p>) : ""}
+        {error ? <p className="text-red-500 font-bold"> {error} </p> : ""}
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
@@ -102,6 +134,7 @@ export function SignupForm(
 
         <div className="flex flex-col space-y-4"></div>
       </form>
+      )}
     </div>
   );
 }
