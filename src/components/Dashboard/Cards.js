@@ -24,6 +24,6 @@ export const projects = [
     title: "My Donations",
     description:
       "List of all donations done by you, through Curo",
-    link: "/donations/my",
+    link: "/charity/my",
   }
 ];
