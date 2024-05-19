@@ -1,32 +1,34 @@
 "use client";
+import { smartContract, transparent } from "@/public/images";
 import Image from "next/image";
 import { StickyScroll } from "../ui/sticky-scroll-reveal";
 
 const content = [
   {
-    title: "Collaborative Editing",
+    title: "Transparency in Donating Money",
     description:
-      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+      "With our blockchain-based decentralized donating system, every transaction is transparent and publicly verifiable. Donors can track their contributions from start to finish, ensuring that funds are used as intended. Our platform leverages the power of blockchain technology to provide an unparalleled level of accountability and trust, making sure your donations make a real impact. ",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-        Collaborative Editing
-      </div>
+      <Image src={transparent} alt="Transparency" className=""/>
     ),
   },
   {
-    title: "Real time changes",
+    title: "Smart Contracts for Safe and Automated Donations",
     description:
-      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+      "Utilize smart contracts to automate your donations. Set conditions and schedules for your contributions, and let the technology handle the rest. This ensures that funds are released automatically when specific criteria are met, providing efficiency and reducing the need for manual intervention.",
     content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
+
+      <div className="flex justify-center items-center h-full">
         <Image
-          src="/linear.webp"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
+          src={smartContract}
+          
+          className="max-w-40"
           alt="linear board demo"
         />
       </div>
+      
+        
+      
     ),
   },
   {
@@ -40,9 +42,9 @@ const content = [
     ),
   },
   {
-    title: "Running out of content",
+    title: "Community Governance",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "Participate in the governance of the platform through a decentralized decision-making process. Stakeholders, including donors and recipients, can vote on important matters, ensuring that the platform evolves according to the community’s needs and values.",
     content: (
       <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
         Running out of content

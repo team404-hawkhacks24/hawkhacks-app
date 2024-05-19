@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/utils/cn";
+import axios from 'axios'; // Or your preferred fetching library
 import React, { useState } from "react";
 import { Select } from "../ui/form/Select";
 import { TextArea } from "../ui/form/TextArea";
@@ -7,11 +8,11 @@ import { Input } from "../ui/form/input";
 import { Label } from "../ui/form/label";
 
 
-export function SignupForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    handleError();
-  };
+
+
+export function SignupForm(
+) {
+
   const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -33,17 +34,30 @@ export function SignupForm() {
     }
   };
 
+  const handleSubmit = async (e:any) => {
+    e.preventDefault()
+    const userData = {
+      firstName, lastName, email, type, feedback
+    }
+    await axios.post("/api/feedbacks", userData).then((response) =>{
+      console.log(response)
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  }
+
 
   return (
     <div className="max-w-xl w-full mx-auto mt-40 rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Feedback Page
+        Feedback Page 
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         Improve CURO - Your Feedback Counts
       </p>
 
-      <form className="my-8">
+      <form className="my-8" action="formFeedback" method="post">
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
@@ -78,6 +92,7 @@ export function SignupForm() {
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
+          onClick={handleSubmit}
         >
           Submit &rarr;
           <BottomGradient />
